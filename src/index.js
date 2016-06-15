@@ -3,8 +3,7 @@ import 'babel-polyfill';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, browserHistory} from 'react-router';
-import routes from './routes';
+import RelayRouter from './components/router';
 
 import Relay from 'react-relay';
 
@@ -12,19 +11,34 @@ import './styles/style.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/toastr/build/toastr.min.css';
 
-ReactDOM.render(<Router history={browserHistory} routes={routes}/>, document.getElementById('app'));
+Relay.injectNetworkLayer(
+  new Relay.DefaultNetworkLayer('http://localhost:8000/graphql')
+);
 
-console.log(
-  Relay.QL`query {
-    store {
-      itemConnection(first: 5){
-        edges {
-          node {
-            name
-            id
-          }
+class MainRoute extends Relay.Route {
+  static routeName = 'Main';
+  static queries = {
+    store: (Component) => Relay.QL
+      `query {
+        store {
+          ${Component.getFragment('store')}
         }
-      }
-    }
-  }`
+      }`
+  }
+}
+
+ReactDOM.render(
+  <Relay.RootContainer
+    Component={RelayRouter}
+    route={new MainRoute()}
+    renderFailure={(err) => {
+      console.log('Error in renderFailure', err);
+      return (
+        <div>
+          <p>Something went wrong</p>
+        </div>
+      );
+    }}
+  />,
+  document.getElementById('app')
 );
