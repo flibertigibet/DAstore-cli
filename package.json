@@ -19,9 +19,11 @@
     "bootstrap": "3.3.6",
     "jquery": "2.2.3",
     "react": "15.0.2",
+    "react-bootstrap": "^0.29.4",
     "react-dom": "15.0.2",
     "react-relay": "^0.9.0",
     "react-router": "^2.4.1",
+    "react-router-relay": "^0.13.2",
     "redux": "3.5.2",
     "sync-request": "^3.0.1",
     "toastr": "2.1.2"
