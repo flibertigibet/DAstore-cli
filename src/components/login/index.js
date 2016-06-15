@@ -2,15 +2,35 @@ import React from 'react';
 import Request from 'superagent';
 import toastr from 'toastr';
 
+import {Button, FormControl} from 'react-bootstrap';
+
 class Login extends React.Component {
+
+  state = {
+    id: '',
+    password: ''
+  };
+
+  onChangeId = (e) => {
+    this.setState({
+      id: e.target.value
+    });
+  }
+
+  onChangePassword = (e) => {
+    this.setState({
+      password: e.target.value
+    });
+  }
 
   loginHandler = async (e) => {
     e.preventDefault();
 
     const userData = {
-      email: `${this.refs.inputEmail.value}@daiict.ac.in`,
-      password: `${this.refs.inputPassword.value}`
+      email: `${this.state.id}@daiict.ac.in`,
+      password: `${this.state.password}`
     }
+    console.log(userData);
     try {
       toastr.warning('Logging In');
       var response = await Request.post('http://localhost:8000/api/students/login')
@@ -28,13 +48,10 @@ class Login extends React.Component {
 
   render() {
     return(
-      <form>
-        <p>Email: </p>
-        <input className='textInput' type='text' ref='inputEmail' />
-        <p>Password: </p>
-        <input className='textInput' type='password' ref='inputPassword' />
-        <br />
-        <input className='textInput' type='submit' onClick={this.loginHandler} />
+      <form style={{width: '300px', margin: '0 auto', padding: '50px', borderRadius: '10px', borderStyle: 'solid', borderColor: 'rgba(0,0,0,0.2)', borderWidth: '1px'}}>
+        <FormControl className='textInput' type='text' onChange={this.onChangeId} placeholder='Enter Id'/>
+        <FormControl className='textInput' type='password' onChange={this.onChangePassword} placeholder='Enter password'/>
+        <Button bsStyle='primary' className='textInput' type='submit' onClick={this.loginHandler}>Login</Button>
       </form>
     );
   }
