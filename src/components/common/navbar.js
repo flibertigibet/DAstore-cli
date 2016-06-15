@@ -3,11 +3,13 @@ import {Link} from 'react-router';
 import Request from 'superagent';
 import toastr from 'toastr';
 
+import {SERVER_URL} from '../../helpers/constants';
+
 class Navbar extends React.Component {
 
   logoutHandler = async () => {
     try {
-      var response = await Request.post(`http://localhost:8000/api/students/logout?access_token=${this.props.user.id}`);
+      var response = await Request.post(`${SERVER_URL}/api/students/logout?access_token=${this.props.user.id}`);
     } catch(err) {
       throw (err);
       return null;

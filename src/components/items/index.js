@@ -3,6 +3,8 @@ import Relay from 'react-relay';
 
 import {ListGroup} from 'react-bootstrap';
 
+import Item from './Item';
+
 class Items extends React.Component {
 
   setLimit = (e) => {
@@ -24,8 +26,8 @@ class Items extends React.Component {
             <option value='20'>20</option>
           </select>
         </div>
-        <ListGroup>
-          {edges.map((edge) => <li key={edge.node.id}>{edge.node.name}</li>)}
+        <ListGroup style={{ overflowY: 'scroll', height: '320px' }}>
+          {edges.map((edge) => <Item key={edge.node.id} itemData={edge.node}/>)}
         </ListGroup>
       </div>
     );
@@ -44,6 +46,10 @@ Items = Relay.createContainer(Items, {
           node {
             id
             name
+            seller {
+              name
+              phone
+            }
           }
         }
       }

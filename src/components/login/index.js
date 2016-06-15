@@ -2,6 +2,8 @@ import React from 'react';
 import Request from 'superagent';
 import toastr from 'toastr';
 
+import {SERVER_URL} from '../../helpers/constants';
+
 import {Button, FormControl} from 'react-bootstrap';
 
 class Login extends React.Component {
@@ -30,10 +32,10 @@ class Login extends React.Component {
       email: `${this.state.id}@daiict.ac.in`,
       password: `${this.state.password}`
     }
-    console.log(userData);
+    // console.log(userData);
     try {
       toastr.warning('Logging In');
-      var response = await Request.post('http://localhost:8000/api/students/login')
+      var response = await Request.post(`${SERVER_URL}/api/students/login`)
         .set('Content-Type', 'application/json')
         .send(JSON.stringify(userData));
     } catch(err) {
