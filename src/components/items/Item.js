@@ -5,9 +5,9 @@ class Item extends React.Component {
   render() {
     return(
       <ListGroupItem header={this.props.itemData.name}>
-        Seller: {this.props.itemData.seller.name}
+        Price: {this.props.itemData.price}
         <br />
-        Phone number: {this.props.itemData.seller.phone}
+        Condition: {this.props.itemData.condition}
       </ListGroupItem>
     );
   }

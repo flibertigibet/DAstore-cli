@@ -4,6 +4,7 @@ import Relay from 'react-relay';
 import {ListGroup} from 'react-bootstrap';
 
 import Item from './Item';
+import AddItem from './addItem';
 
 class Items extends React.Component {
 
@@ -26,7 +27,8 @@ class Items extends React.Component {
             <option value='20'>20</option>
           </select>
         </div>
-        <ListGroup style={{ overflowY: 'scroll', height: '320px' }}>
+        <AddItem store={this.props.rootQ}/>
+        <ListGroup style={{ overflowY: 'scroll', maxHeight: '320px' }}>
           {edges.map((edge) => <Item key={edge.node.id} itemData={edge.node}/>)}
         </ListGroup>
       </div>
@@ -41,15 +43,14 @@ Items = Relay.createContainer(Items, {
   fragments: {
     rootQ: () => Relay.QL
     `fragment on Store{
+      id
       itemConnection(first: $limit) {
         edges {
           node {
             id
             name
-            seller {
-              name
-              phone
-            }
+            price
+            condition
           }
         }
       }

@@ -8,15 +8,17 @@ import {SERVER_URL} from '../../helpers/constants';
 class Navbar extends React.Component {
 
   logoutHandler = async () => {
+    this.props.setLoggedOut();
+    toastr.remove();
+    toastr.success('Logged out');
     try {
-      var response = await Request.post(`${SERVER_URL}/api/students/logout?access_token=${this.props.user.id}`);
+      var response = await Request.post(`${SERVER_URL}/api/students/logout?access_token=${localStorage.getItem('jwt')}`);
+      localStorage.removeItem('jwt');
+      localStorage.removeItem('userId');
     } catch(err) {
       throw (err);
       return null;
     }
-    this.props.setLoggedOut();
-    toastr.remove();
-    toastr.success('Logged out');
   };
 
   render() {
@@ -29,7 +31,7 @@ class Navbar extends React.Component {
             { ' | ' }
             <Link to='items'>Items</Link>
             { ' | ' }
-            <Link to='/' onClick={this.logoutHandler}>Logout</Link>
+            <Link to='' onClick={this.logoutHandler}>Logout</Link>
         </nav>
       </div>
     );
