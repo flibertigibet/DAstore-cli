@@ -29,20 +29,41 @@ class Login extends React.Component {
     e.preventDefault();
 
     const userData = {
-      email: `${this.state.id}@daiict.ac.in`,
+      id: `${this.state.id}`,
       password: `${this.state.password}`
     }
     // console.log(userData);
+    let data = null;
     try {
       toastr.warning('Logging In');
-      var response = await Request.post(`${SERVER_URL}/api/students/login`)
+       data = await Request.post(`${SERVER_URL}/api/students/authenticate-and-login`)
         .set('Content-Type', 'application/json')
         .send(JSON.stringify(userData));
+
     } catch(err) {
       toastr.error(err);
       throw (err);
     }
-    const user = JSON.parse(response.text);
+    data = JSON.parse(data.text);
+    let user = data.response;
+    // console.log(user);
+    // console.log(response);
+    if(user.userId == null) {
+      toastr.remove();
+      toastr.success('Welcome new user!');
+      try {
+        const response = await Request.post(`${SERVER_URL}/api/students/login`)
+          .set('Content-Type', 'application/json')
+          // .set('Set-Cookie': 'mycookie=test')
+          .send(JSON.stringify({
+            email: `${userData.id}@daiict.ac.in`,
+            password: `${userData.password}`
+          }));
+        user = JSON.parse(response.text);
+      } catch(err) {
+        throw(err);
+      }
+    }
     this.props.setLoggedIn(user);
     toastr.remove();
     toastr.success('Logged In');
