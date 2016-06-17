@@ -6,6 +6,8 @@ import Home from './home';
 import About from './about';
 import Items from './items';
 
+import {SERVER_URL} from '../helpers/constants';
+
 import useRelay from 'react-router-relay';
 
 class RelayRouter extends React.Component {
@@ -14,7 +16,7 @@ class RelayRouter extends React.Component {
     super(props);
     // console.log(this.props.store);
     Relay.injectNetworkLayer(
-      new Relay.DefaultNetworkLayer('http://localhost:8000/graphql')
+      new Relay.DefaultNetworkLayer(`${SERVER_URL}/graphql`)
     );
   }
 

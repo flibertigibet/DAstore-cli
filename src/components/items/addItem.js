@@ -24,7 +24,7 @@ class AddItem extends React.Component {
 
   render() {
     return(
-      <div style={{display: 'flex', width: '600px', justifyContent: 'space-between', margin: '5px', marginLeft: '0px'}}>
+      <div style={{display: 'flex', width: '600px', justifyContent: 'space-between', margin: '10px 0 10px 0'}}>
         <input
           style={{ margin: 'auto 10px', marginLeft: '0px'}}
           placeholder='Enter new item'

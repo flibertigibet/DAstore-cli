@@ -17,7 +17,9 @@ var path = require('path');
 var request = require('sync-request');
 var introspectionQuery = require('graphql/utilities').introspectionQuery;
 
-const GRAPH_SERVER_URL = 'http://localhost:8000/graphql';
+import {SERVER_URL} from '../src/helpers/constants';
+
+const GRAPH_SERVER_URL = `${SERVER_URL}/graphql`;
 console.log("Fetching GraphQL Schema");
 const response = request('GET', GRAPH_SERVER_URL, {
   qs: {
