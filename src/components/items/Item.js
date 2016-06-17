@@ -8,6 +8,8 @@ class Item extends React.Component {
         Price: {this.props.itemData.price}
         <br />
         Condition: {this.props.itemData.condition}
+        <br />
+        Seller: {this.props.itemData.seller.name} {' | '} Phone: {this.props.itemData.seller.phone}
       </ListGroupItem>
     );
   }

@@ -51,6 +51,10 @@ Items = Relay.createContainer(Items, {
             name
             price
             condition
+            seller {
+              name
+              phone
+            }
           }
         }
       }
