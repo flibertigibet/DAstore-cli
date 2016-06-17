@@ -9,7 +9,7 @@ class App extends React.Component {
     let jwt = localStorage.getItem('jwt');
     let userId = localStorage.getItem('userId');
     if (jwt !== null) {
-      console.log('Came here!');
+      // console.log('Came here!');
       this.setLoggedIn({
         id: jwt,
         userId: userId

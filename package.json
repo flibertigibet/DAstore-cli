@@ -5,17 +5,12 @@
   "scripts": {
     "prestart": "babel-node tools/startMessage.js",
     "start": "npm run open:src",
+    "build": "NODE_ENV=production npm run open:src",
     "open:src": "babel-node tools/srcServer.js",
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
     "lint:watch": "npm run lint -- --watch",
     "test": "mocha --reporter progress tools/testSetup.js \"src/**/*.test.js\"",
-    "test:watch": "npm run test -- --watch",
-    
-    "clean-dist": "npm run remove-dist && mkdir dist",
-    "build:html": "babel-node tools/buildHtml.js",
-    "prebuild": "npm run clean-dist && npm run build:html",
-    "build": "babel-node tools/build.js && npm run open:dist",
-    "open:dist": "babel-node tools/distServer.js"
+    "test:watch": "npm run test -- --watch"
   },
   "author": "Cory House",
   "license": "MIT",
