@@ -2,9 +2,10 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'cheap-module-source-map',
   noInfo: false,
   entry: [
+    'babel-regenerator-runtime',
     'eventsource-polyfill', // necessary for hot reloading with IE
     './src/index'
   ],
@@ -18,7 +19,20 @@ module.exports = {
     contentBase: './src'
   },
   plugins: [
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': JSON.stringify('production')
+    }
+  }),
+  new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false,
+      screw_ie8: true
+    },
+    comments: false,
+    sourceMap: false
+  })
   ],
   module: {
     loaders: [

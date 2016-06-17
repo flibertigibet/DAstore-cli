@@ -41,6 +41,22 @@ class CreateItemMutation extends Relay.Mutation {
       }
     }];
   }
+
+  getOptimisticResponse() {
+    return {
+      itemEdge: {
+        node: {
+          name: this.props.name,
+          price: this.props.price,
+          condition: this.props.condition,
+          seller: {
+            name: 'saving..',
+            phone: 'saving..'
+          }
+        }
+      }
+    };
+  }
 }
 
 export default CreateItemMutation;

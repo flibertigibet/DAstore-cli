@@ -3,12 +3,12 @@ import {Button} from 'react-bootstrap';
 
 import Relay from 'react-relay';
 
-import CreateItemMutation from '../mutations/createItemMutation';
+import CreateItemMutation from '../../mutations/createItemMutation';
 
 class AddItem extends React.Component {
 
   handleAddItem = () => {
-    Relay.Store.update(
+    Relay.Store.commitUpdate(
       new CreateItemMutation({
         name: this.refs.itemNameInput.value,
         price: this.refs.itemPriceInput.value,
