@@ -24,6 +24,7 @@ class CreateItemMutation extends Relay.Mutation {
         itemEdge
         store {
           itemConnection
+          student
         }
       }
     `

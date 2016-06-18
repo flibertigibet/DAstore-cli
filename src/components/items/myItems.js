@@ -2,6 +2,7 @@ import React from 'react';
 import Relay from 'react-relay';
 
 import Items from './items';
+import AddItem from './addItem';
 
 class MyItems extends React.Component {
 
@@ -14,6 +15,7 @@ class MyItems extends React.Component {
         <div style={{display: 'flex', alignItems: 'center'}}>
           <h4>Add items</h4>
         </div>
+        <AddItem store={this.props.rootQ}/>
         <Items edges={edges} />
       </div>
     );
@@ -22,7 +24,7 @@ class MyItems extends React.Component {
 
 MyItems = Relay.createContainer(MyItems, {
   initialVariables: {
-    limit: 5,
+    limit: 100,
     id: localStorage.getItem('userId')
   },
   fragments: {
