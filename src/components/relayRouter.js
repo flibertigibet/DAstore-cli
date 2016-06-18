@@ -36,6 +36,12 @@ class RelayRouter extends React.Component {
     });
   }
 
+  // StudentQuery() {
+  //   return({
+  //     rootQ: () => Relay.QL`query { store { student (sellerId: ${localStorage.getItem('userId')}) } }`
+  //   });
+  // }
+
   render() {
     return(
       <div>
