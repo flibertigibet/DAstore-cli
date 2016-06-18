@@ -9,7 +9,7 @@ class Items extends React.Component {
 
   static propTypes = {
     edges: React.PropTypes.array.isRequired,
-    sellerVisible: React.PropTypes.boolean
+    sellerVisible: React.PropTypes.bool
   }
 
   static defaultProps = {
@@ -17,7 +17,7 @@ class Items extends React.Component {
   }
 
   render() {
-    const {edges, sellerVisible} = this.props;
+    const {sellerVisible, edges} = this.props;
     return(
       <div>
         <ListGroup style={{ overflowY: 'scroll', maxHeight: '320px' }}>

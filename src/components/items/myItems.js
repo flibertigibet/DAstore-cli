@@ -9,6 +9,7 @@ class MyItems extends React.Component {
   render() {
     const {student} = this.props.rootQ;
     const {edges} =  student.myItems;
+    console.log(edges);
     return(
       <div>
         <h3>Items page</h3>
@@ -24,7 +25,7 @@ class MyItems extends React.Component {
 
 MyItems = Relay.createContainer(MyItems, {
   initialVariables: {
-    limit: 100,
+    limit: 10,
     id: localStorage.getItem('userId')
   },
   fragments: {
