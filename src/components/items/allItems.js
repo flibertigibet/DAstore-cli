@@ -5,12 +5,27 @@ import Items from './items';
 
 class AllItems extends React.Component {
 
+  setLimit = (e) => {
+    let newLimit = Number(e.target.value);
+    this.props.relay.setVariables({
+      limit: newLimit
+    });
+  }
+
   render() {
     const {rootQ} = this.props;
     const {edges} = rootQ.otherItems;
     return(
       <div>
-        <Items edges={edges} sellerVisible={true} defaultValue={this.props.relay.variables.limit} setVariables={this.props.relay.setVariables}/>
+        <div style={{display: 'flex', alignItems: 'center'}}>
+          <h4>All items</h4>
+          <select onChange={this.setLimit} defaultValue={this.props.relay.variables.limit} style={{margin: '0 10px'}}>
+            <option value='5'>5</option>
+            <option value='10'>10</option>
+            <option value='20'>20</option>
+          </select>
+        </div>
+        <Items edges={edges} sellerVisible={true}/>
       </div>
     );
   }

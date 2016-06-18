@@ -10,7 +10,11 @@ class MyItems extends React.Component {
     const {edges} =  student.myItems;
     return(
       <div>
-        <Items edges={edges} defaultValue={this.props.relay.variables.limit} setVariables={this.props.relay.setVariables}/>
+        <h3>Items page</h3>
+        <div style={{display: 'flex', alignItems: 'center'}}>
+          <h4>Add items</h4>
+        </div>
+        <Items edges={edges} />
       </div>
     );
   }

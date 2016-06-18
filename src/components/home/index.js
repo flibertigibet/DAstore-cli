@@ -8,7 +8,6 @@ class Home extends React.Component {
     return(
       <div>
         <h3>Home page</h3>
-        <p>This is the homepage. Content yet to be filled.</p>
         <AllItems rootQ={this.props.rootQ.student}/>
       </div>
     );
