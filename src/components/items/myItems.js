@@ -17,7 +17,7 @@ class MyItems extends React.Component {
           <h4>Add items</h4>
         </div>
         <AddItem store={this.props.rootQ}/>
-        <Items edges={edges} />
+        <Items store={this.props.rootQ} edges={edges} />
       </div>
     );
   }
