@@ -4,7 +4,7 @@ import Relay from 'react-relay';
 import App from './App';
 import Home from './home';
 import About from './about';
-import Items from './items';
+import MyItems from './items/myItems';
 
 import {SERVER_URL} from '../helpers/constants';
 
@@ -23,9 +23,9 @@ class RelayRouter extends React.Component {
   routes() {
     return(
       <Route path='/' component={App}>
-        <IndexRoute component={Home} />
+        <IndexRoute  queries= {this.rootQuery()} component={Home} />
         <Route path='about' component={About} />
-        <Route path='items' queries={this.rootQuery()} component={Items} />
+        <Route path='items' queries={this.rootQuery()} component={MyItems} />
       </Route>
     );
   }
@@ -35,12 +35,6 @@ class RelayRouter extends React.Component {
       rootQ: () => Relay.QL`query { store }`
     });
   }
-
-  // StudentQuery() {
-  //   return({
-  //     rootQ: () => Relay.QL`query { store { student (sellerId: ${localStorage.getItem('userId')}) } }`
-  //   });
-  // }
 
   render() {
     return(
