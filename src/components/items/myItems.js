@@ -6,10 +6,16 @@ import AddItem from './addItem';
 
 class MyItems extends React.Component {
 
+  componentDidMount() {
+    this.props.relay.setVariables({
+      id: localStorage.getItem('userId')
+    });
+  }
+
   render() {
     const {student} = this.props.rootQ;
     const {edges} =  student.myItems;
-    console.log(edges);
+    // console.log(edges);
     return(
       <div>
         <h3>Items page</h3>
@@ -26,7 +32,7 @@ class MyItems extends React.Component {
 MyItems = Relay.createContainer(MyItems, {
   initialVariables: {
     limit: 10,
-    id: localStorage.getItem('userId')
+    id: ''
   },
   fragments: {
     rootQ: () => Relay.QL

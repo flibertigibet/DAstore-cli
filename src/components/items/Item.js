@@ -25,7 +25,7 @@ class Item extends React.Component {
         Condition: {this.props.itemData.condition}
         <br />
         {body}
-        <Button onClick={this.deleteHandler}>Delete</Button>
+        {!this.props.sellerVisible && <Button bsStyle='danger' onClick={this.deleteHandler}>Delete</Button>}
       </ListGroupItem>
     );
   }
