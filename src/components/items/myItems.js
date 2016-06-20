@@ -6,7 +6,7 @@ import AddItem from './addItem';
 
 class MyItems extends React.Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.relay.setVariables({
       id: localStorage.getItem('userId')
     });
@@ -15,7 +15,6 @@ class MyItems extends React.Component {
   render() {
     const {student} = this.props.rootQ;
     const {edges} =  student.myItems;
-    // console.log(edges);
     return(
       <div>
         <h3>Items page</h3>

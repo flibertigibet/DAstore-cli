@@ -8,6 +8,7 @@ import Item from './Item';
 class Items extends React.Component {
 
   static propTypes = {
+    store: React.PropTypes.object,
     edges: React.PropTypes.array.isRequired,
     sellerVisible: React.PropTypes.bool
   }
