@@ -9,14 +9,17 @@ class Navbar extends React.Component {
 
   logoutHandler = () => {
     this.props.setLoggedOut();
-    toastr.remove();
-    toastr.success('Logged out');
     try {
-      var response = Request.post(`${SERVER_URL}/api/students/logout?access_token=${localStorage.getItem('jwt')}`);
+      Request.post(`${SERVER_URL}/api/students/logout?access_token=${localStorage.getItem('jwt')}`)
+        .then(() => {
+          toastr.remove();
+          toastr.success('Logged out');
+        });
       localStorage.removeItem('jwt');
       localStorage.removeItem('userId');
     } catch(err) {
       throw (err);
+      toastr.error(err);
     }
   };
 

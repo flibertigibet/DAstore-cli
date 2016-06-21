@@ -20,8 +20,9 @@ class DeleteItemMutation extends Relay.Mutation {
       fragment on DeleteItemPayload {
         itemEdge
         store {
-          itemConnection
-          student
+          student {
+            myItems
+          }
         }
         deletedItemID
       }

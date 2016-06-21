@@ -23,8 +23,9 @@ class CreateItemMutation extends Relay.Mutation {
       fragment on CreateItemPayload {
         itemEdge
         store {
-          itemConnection
-          student
+          student {
+            myItems
+          }
         }
       }
     `
