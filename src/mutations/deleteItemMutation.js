@@ -23,20 +23,18 @@ class DeleteItemMutation extends Relay.Mutation {
           itemConnection
           student
         }
+        deletedItemID
       }
     `
   }
 
   getConfigs() {
     return [{
-      type: 'RANGE_DELETE',
+      type: 'NODE_DELETE',
       parentName: 'store',
       parentID: this.props.store.id,
       connectionName: 'itemConnection',
-      deletedIDFieldName: `itemEdge {
-        cursor
-      }`,
-      pathToConnection: ['itemConnection']
+      deletedIDFieldName: 'deletedItemID'
     }];
   }
 

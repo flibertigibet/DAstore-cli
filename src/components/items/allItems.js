@@ -5,11 +5,11 @@ import Items from './items';
 
 class AllItems extends React.Component {
 
-  componentDidMount() {
-    this.props.relay.setVariables({
-      id: localStorage.getItem('userId')
-    });
-  }
+  // componentDidMount() {
+  //   this.props.relay.setVariables({
+  //     id: localStorage.getItem('userId')
+  //   });
+  // }
 
   setLimit = (e) => {
     let newLimit = Number(e.target.value);

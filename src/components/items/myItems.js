@@ -6,11 +6,11 @@ import AddItem from './addItem';
 
 class MyItems extends React.Component {
 
-  componentWillMount() {
-    this.props.relay.setVariables({
-      id: localStorage.getItem('userId')
-    });
-  }
+  // componentDidMount() {
+  //   this.props.relay.setVariables({
+  //     id: localStorage.getItem('userId')
+  //   });
+  // }
 
   render() {
     const {student} = this.props.rootQ;
@@ -31,7 +31,7 @@ class MyItems extends React.Component {
 MyItems = Relay.createContainer(MyItems, {
   initialVariables: {
     limit: 10,
-    id: ''
+    id: localStorage.getItem('userId')
   },
   fragments: {
     rootQ: () => Relay.QL
