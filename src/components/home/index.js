@@ -4,6 +4,12 @@ import Relay from 'react-relay';
 
 class Home extends React.Component {
 
+  componentDidMount() {
+    this.props.relay.setVariables({
+      id: localStorage.getItem('userId')
+    });
+  }
+
   render() {
     return(
       <div>

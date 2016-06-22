@@ -5,12 +5,6 @@ import Items from './items';
 
 class AllItems extends React.Component {
 
-  // componentDidMount() {
-  //   this.props.relay.setVariables({
-  //     id: localStorage.getItem('userId')
-  //   });
-  // }
-
   setLimit = (e) => {
     let newLimit = Number(e.target.value);
     this.props.relay.setVariables({
@@ -39,13 +33,12 @@ class AllItems extends React.Component {
 
 AllItems = Relay.createContainer(AllItems, {
   initialVariables: {
-    limit: 5,
-    id: localStorage.getItem('userId')
+    limit: 5
   },
   fragments: {
     rootQ: () => Relay.QL
     `fragment on Student {
-      otherItems(first: $limit, id: $id) {
+      otherItems(first: $limit) {
         edges {
           node {
             id

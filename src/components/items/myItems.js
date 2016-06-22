@@ -6,11 +6,11 @@ import AddItem from './addItem';
 
 class MyItems extends React.Component {
 
-  // componentDidMount() {
-  //   this.props.relay.setVariables({
-  //     id: localStorage.getItem('userId')
-  //   });
-  // }
+  componentDidMount() {
+    this.props.relay.setVariables({
+      id: localStorage.getItem('userId')
+    });
+  }
 
   render() {
     const {student} = this.props.rootQ;
@@ -38,7 +38,7 @@ MyItems = Relay.createContainer(MyItems, {
     `fragment on Store{
       id
       student(sellerId: $id) {
-        myItems(first: $limit, id: $id) {
+        myItems(first: $limit) {
           edges {
             node {
               id
