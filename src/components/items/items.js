@@ -21,7 +21,7 @@ class Items extends React.Component {
     const {sellerVisible, edges} = this.props;
     return(
       <div>
-        <ListGroup style={{ overflowY: 'scroll', maxHeight: '320px' }}>
+        <ListGroup style={{ overflowY: 'scroll', maxHeight: '1000px' }}>
           {edges.map((edge) => <Item key={edge.node.id} store={this.props.store} itemData={edge.node} sellerVisible={sellerVisible}/>)}
         </ListGroup>
       </div>

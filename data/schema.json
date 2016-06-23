@@ -99,6 +99,11 @@
               "kind": "OBJECT",
               "name": "Store",
               "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Student",
+              "ofType": null
             }
           ]
         },
@@ -480,6 +485,22 @@
           "fields": [
             {
               "name": "id",
+              "description": "The ID of an object",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pid",
               "description": "This is the student id",
               "args": [],
               "type": {
@@ -634,7 +655,13 @@
             }
           ],
           "inputFields": null,
-          "interfaces": [],
+          "interfaces": [
+            {
+              "kind": "INTERFACE",
+              "name": "Node",
+              "ofType": null
+            }
+          ],
           "enumValues": null,
           "possibleTypes": null
         },

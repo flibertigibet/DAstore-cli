@@ -20,9 +20,9 @@ class AllItems extends React.Component {
         <div style={{display: 'flex', alignItems: 'center'}}>
           <h4>All items</h4>
           <select onChange={this.setLimit} defaultValue={this.props.relay.variables.limit} style={{margin: '0 10px'}}>
-            <option value='5'>5</option>
-            <option value='10'>10</option>
-            <option value='20'>20</option>
+            <option value='100'>100</option>
+            <option value='200'>200</option>
+            <option value='500'>500</option>
           </select>
         </div>
         <Items edges={edges} sellerVisible={true}/>
@@ -33,7 +33,7 @@ class AllItems extends React.Component {
 
 AllItems = Relay.createContainer(AllItems, {
   initialVariables: {
-    limit: 5
+    limit: 100
   },
   fragments: {
     rootQ: () => Relay.QL

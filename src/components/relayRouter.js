@@ -23,7 +23,7 @@ class RelayRouter extends React.Component {
   routes() {
     return(
       <Route path='/' component={App}>
-        <IndexRoute queries= {this.rootQuery()} component={Home} />
+        <IndexRoute queries={this.rootQuery()} component={Home} />
         <Route path='about' component={About} />
         <Route path='items' queries={this.rootQuery()} component={MyItems} />
       </Route>
@@ -39,7 +39,7 @@ class RelayRouter extends React.Component {
   render() {
     return(
       <div>
-      <Router history={browserHistory} render={applyRouterMiddleware(useRelay)} routes={this.routes()} environment={Relay.Store} />
+        <Router history={browserHistory} render={applyRouterMiddleware(useRelay)} routes={this.routes()} environment={Relay.Store} />
       </div>
     );
   }

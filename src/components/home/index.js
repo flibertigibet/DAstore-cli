@@ -2,19 +2,35 @@ import React from 'react';
 import AllItems from '../items/allItems';
 import Relay from 'react-relay';
 
+import Loading from '../common/loading';
+
 class Home extends React.Component {
 
-  componentDidMount() {
+  state = {
+    loading: true
+  };
+
+  componentWillMount() {
     this.props.relay.setVariables({
-      id: localStorage.getItem('userId')
-    });
+        id: localStorage.getItem('userId')
+      }, readyState => {
+        if (readyState.done || readyState.aborted) {
+          this.setState({loading: false});
+        } else if (readyState.error) {
+          this.setState({loading: false, error});
+        } else {
+          this.setState({loading: true});
+        }
+      }
+    );
   }
 
   render() {
+    const body = (this.state.loading) ? <Loading /> : <AllItems rootQ={this.props.rootQ.student}/>;
     return(
       <div>
         <h3>Home page</h3>
-        <AllItems rootQ={this.props.rootQ.student}/>
+        {body}
       </div>
     );
   }
