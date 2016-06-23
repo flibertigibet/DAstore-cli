@@ -42,6 +42,12 @@ class AddItem extends React.Component {
             placeholder='Enter condition'
             type='text'
             ref='itemConditionInput'
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                  this.handleAddItem();
+                }
+              }
+            }
           />
         <Button onClick={this.handleAddItem}>Add</Button>
       </div>
