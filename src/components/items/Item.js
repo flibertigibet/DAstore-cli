@@ -4,6 +4,7 @@ import {ListGroupItem, Button} from 'react-bootstrap';
 import Relay from 'react-relay';
 
 import DeleteItemMutation from '../../mutations/deleteItemMutation';
+import BuyItemMutation from '../../mutations/buyItemMutation';
 
 class Item extends React.Component {
 
@@ -17,7 +18,14 @@ class Item extends React.Component {
   }
 
   buyItemHandler = () => {
-    //Nothing for now
+    // console.log(this.props);
+    Relay.Store.commitUpdate(
+      new BuyItemMutation({
+        itemId: this.props.itemData.id,
+        buyerId: localStorage.getItem('userId'),
+        store: this.props.store
+      })
+    );
   }
 
   render() {

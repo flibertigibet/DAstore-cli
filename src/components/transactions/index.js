@@ -34,6 +34,7 @@ Transactions = Relay.createContainer(Transactions, {
     rootQ: () => Relay.QL `
       fragment on Store {
         transactions(id: $id) {
+          id
           ${Transaction.getFragment('rootQ')}
         }
       }

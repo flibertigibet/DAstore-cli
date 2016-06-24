@@ -24,7 +24,6 @@ Transaction = Relay.createContainer(Transaction, {
   fragments: {
     rootQ: () => Relay.QL`
       fragment on Transaction {
-        id
         itemName
         sellerName
         buyerName

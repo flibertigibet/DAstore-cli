@@ -12,6 +12,10 @@ class AllItems extends React.Component {
     });
   }
 
+  static propTypes = {
+    store: React.PropTypes.object.isRequired
+  };
+
   render() {
     const {rootQ} = this.props;
     const {edges} = rootQ.otherItems;
@@ -25,7 +29,7 @@ class AllItems extends React.Component {
             <option value='500'>500</option>
           </select>
         </div>
-        <Items edges={edges} sellerVisible={true}/>
+        <Items store = {this.props.store} edges={edges} sellerVisible={true}/>
       </div>
     );
   }
