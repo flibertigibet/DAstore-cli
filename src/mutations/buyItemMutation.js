@@ -19,11 +19,12 @@ class BuyItemMutation extends Relay.Mutation {
   getFatQuery() {
     return Relay.QL`
       fragment on BuyItemPayload {
-        transaction
+        transactionEdge
         store {
           student {
             myItems
             otherItems
+            transactions
           }
         }
       }
@@ -36,7 +37,7 @@ class BuyItemMutation extends Relay.Mutation {
       parentName: 'store',
       parentID: this.props.store.id,
       connectionName: 'transactions',
-      edgeName: 'transaction',
+      edgeName: 'transactionEdge',
       rangeBehaviors: {
         '': 'append'
       }

@@ -8,7 +8,7 @@ import CreateItemMutation from '../../mutations/createItemMutation';
 class AddItem extends React.Component {
 
   handleAddItem = () => {
-    console.log(this.refs.itemNameInput);
+    // console.log(this.refs.itemNameInput);
     Relay.Store.commitUpdate(
       new CreateItemMutation({
         name: this.refs.itemNameInput.value,
