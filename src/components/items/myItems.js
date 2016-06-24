@@ -12,6 +12,10 @@ class MyItems extends React.Component {
     loading: true
   };
 
+  handleMutation(mutation) {
+    Relay.Store.commitUpdate(mutation);
+  }
+
   componentWillMount() {
     this.props.relay.setVariables({
         id: localStorage.getItem('userId')
@@ -31,14 +35,14 @@ class MyItems extends React.Component {
     const {student} = this.props.rootQ;
     const {edges} =  student.myItems;
 
-    const body = (this.state.loading) ? <Loading /> : <Items store={this.props.rootQ} edges={edges} />;
+    const body = (this.state.loading) ? <Loading /> : <Items handleMutation={this.handleMutation} store={this.props.rootQ} edges={edges} />;
     return(
       <div>
         <h3>Items page</h3>
         <div style={{display: 'flex', alignItems: 'center'}}>
           <h4>Add items</h4>
         </div>
-        <AddItem store={this.props.rootQ}/>
+        <AddItem handleMutation={this.handleMutation} store={this.props.rootQ}/>
         {body}
       </div>
     );

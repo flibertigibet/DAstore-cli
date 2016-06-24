@@ -5,6 +5,10 @@ import Items from './items';
 
 class AllItems extends React.Component {
 
+  handleMutation(mutation) {
+    Relay.Store.commitUpdate(mutation);
+  }
+
   setLimit = (e) => {
     let newLimit = Number(e.target.value);
     this.props.relay.setVariables({
@@ -29,7 +33,7 @@ class AllItems extends React.Component {
             <option value='500'>500</option>
           </select>
         </div>
-        <Items store = {this.props.store} edges={edges} sellerVisible={true}/>
+        <Items handleMutation={this.handleMutation} store = {this.props.store} edges={edges} sellerVisible={true}/>
       </div>
     );
   }

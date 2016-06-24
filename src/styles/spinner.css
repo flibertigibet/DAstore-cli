@@ -6,7 +6,7 @@
   height: 28px;
   width: 28px;
   animation: rotate 0.8s infinite linear;
-  border: 6px solid #000;
+  border: 6px solid #D0D0D0;
   border-right-color: transparent;
   border-radius: 50%;
 }

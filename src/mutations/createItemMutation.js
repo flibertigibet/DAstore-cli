@@ -56,7 +56,8 @@ class CreateItemMutation extends Relay.Mutation {
             phone: 'saving..'
           }
         }
-      }
+      },
+      store: this.props.store
     };
   }
 }

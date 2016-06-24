@@ -39,9 +39,9 @@ class DeleteItemMutation extends Relay.Mutation {
     }];
   }
 
-  // getOptimisticResponse() {
-  //   return {};
-  // }
+  getOptimisticResponse() {
+    return {};
+  }
 }
 
 export default DeleteItemMutation;

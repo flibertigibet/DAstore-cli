@@ -9,7 +9,7 @@ class AddItem extends React.Component {
 
   handleAddItem = () => {
     // console.log(this.refs.itemNameInput);
-    Relay.Store.commitUpdate(
+    this.props.handleMutation(
       new CreateItemMutation({
         name: this.refs.itemNameInput.value,
         price: this.refs.itemPriceInput.value,
