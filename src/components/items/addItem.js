@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button} from 'react-bootstrap';
+import {FormGroup, Button, FormControl} from 'react-bootstrap';
 
 import Relay from 'react-relay';
 
@@ -8,6 +8,7 @@ import CreateItemMutation from '../../mutations/createItemMutation';
 class AddItem extends React.Component {
 
   handleAddItem = () => {
+    console.log(this.refs.itemNameInput);
     Relay.Store.commitUpdate(
       new CreateItemMutation({
         name: this.refs.itemNameInput.value,
@@ -24,7 +25,7 @@ class AddItem extends React.Component {
 
   render() {
     return(
-      <div style={{display: 'flex', width: '600px', justifyContent: 'space-between', margin: '10px 0 10px 0'}}>
+      <FormGroup style={{display: 'flex', width: '600px', justifyContent: 'space-between', margin: '10px 0 10px 0'}}>
         <input
           style={{ margin: 'auto 10px', marginLeft: '0px'}}
           placeholder='Enter new item'
@@ -50,7 +51,7 @@ class AddItem extends React.Component {
             }
           />
         <Button onClick={this.handleAddItem}>Add</Button>
-      </div>
+      </FormGroup>
     );
   }
 }

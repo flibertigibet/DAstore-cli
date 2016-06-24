@@ -31,7 +31,9 @@ class Navbar extends React.Component {
             { ' | ' }
             <Link to='about'>About</Link>
             { ' | ' }
-            <Link to='items'>Items</Link>
+            <Link to='items'>My Items</Link>
+            { ' | ' }
+            <Link to='transactions'>Transactions</Link>
             { ' | ' }
             <Link to='' onClick={this.logoutHandler}>Logout</Link>
         </nav>
