@@ -53,6 +53,7 @@ AllItems = Relay.createContainer(AllItems, {
             name
             price
             condition
+            pictureUrl
             seller {
               name
               phone

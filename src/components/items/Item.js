@@ -31,6 +31,7 @@ class Item extends React.Component {
     return(
       <ListGroupItem header={this.props.itemData.name}>
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+          <img src={this.props.itemData.pictureUrl} style={{ width: '50px', height: '50px'}}/>
           <div>
             Price: {this.props.itemData.price} ₹
             <br />

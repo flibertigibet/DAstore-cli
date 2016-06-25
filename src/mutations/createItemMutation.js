@@ -14,6 +14,7 @@ class CreateItemMutation extends Relay.Mutation {
       name: this.props.name,
       price: this.props.price,
       condition: this.props.condition,
+      pictureUrl: this.props.pictureUrl,
       sellerId: this.props.sellerId
     }
   }
@@ -44,22 +45,22 @@ class CreateItemMutation extends Relay.Mutation {
     }];
   }
 
-  getOptimisticResponse() {
-    return {
-      itemEdge: {
-        node: {
-          name: this.props.name,
-          price: this.props.price,
-          condition: this.props.condition,
-          seller: {
-            name: 'saving..',
-            phone: 'saving..'
-          }
-        }
-      },
-      store: this.props.store
-    };
-  }
+  // getOptimisticResponse() {
+  //   return {
+  //     itemEdge: {
+  //       node: {
+  //         name: this.props.name,
+  //         price: this.props.price,
+  //         condition: this.props.condition,
+  //         seller: {
+  //           name: 'saving..',
+  //           phone: 'saving..'
+  //         }
+  //       }
+  //     },
+  //     store: this.props.store
+  //   };
+  // }
 }
 
 export default CreateItemMutation;

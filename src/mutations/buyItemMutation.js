@@ -36,7 +36,7 @@ class BuyItemMutation extends Relay.Mutation {
       type: 'RANGE_ADD',
       parentName: 'store',
       parentID: this.props.store.id,
-      connectionName: 'transactions',
+      connectionName: 'transactionConnection',
       edgeName: 'transactionEdge',
       rangeBehaviors: {
         '': 'append'
