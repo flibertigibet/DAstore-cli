@@ -2,6 +2,8 @@ import React from 'react';
 import {FormGroup, Button, FormControl} from 'react-bootstrap';
 import Dropzone from 'react-dropzone';
 
+import Loading from '../common/loading';
+
 import Toastr from 'toastr';
 
 import Request from 'superagent';
@@ -26,8 +28,11 @@ class AddItem extends React.Component {
 
   onDrop = async (files) => {
     // console.log('Received files: ', files);
+    this.removeFailedImage();
     this.setState({
-      files: files
+      files: files,
+      url: null,
+      publicId: null
     });
     try {
       const res = await Request.post(`${SERVER_URL}/upload`)
@@ -66,16 +71,23 @@ class AddItem extends React.Component {
       this.refs.itemPriceInput.value='';
       this.refs.itemConditionInput.value='';
 
+      this.setState({
+        files: null,
+        url: null,
+        publicId: null
+      });
+
     } else if(!this.state.url){
-        Toastr.error('Please upload an image');
+        Toastr.warning('Please upload an image');
     } else {
-        Toastr.error('Please fill in all the fields');
+        Toastr.warning('Please fill in all the fields');
+        this.removeFailedImage();
+        this.setState({
+          files: null,
+          url: null,
+          publicId: null
+        });
     }
-    this.setState({
-      files: null,
-      url: null,
-      publicId: null
-    });
   }
 
   removeFailedImage = async () => {
@@ -117,7 +129,7 @@ class AddItem extends React.Component {
         <Dropzone multiple={false} onDrop={this.onDrop} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', borderStyle: 'dashed', borderWidth: '2px', minHeight: '50px', marginBottom: '20px'}}>
           {this.state.files ?
             <div>
-              <div>{this.state.files.map((file) => <img src={file.preview} />)}</div>
+              <div>{(this.state.url) ? <img style={{width: '200px'}}src={this.state. files[0].preview} /> : <Loading />}</div>
             </div> :
             <div>Drop a picture of your item, or click to select picture to upload.</div>}
         </Dropzone>

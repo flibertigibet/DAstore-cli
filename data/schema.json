@@ -907,6 +907,18 @@
               "deprecationReason": null
             },
             {
+              "name": "itemPictureUrl",
+              "description": "This is the item picture url",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "itemName",
               "description": "This is the item id",
               "args": [],

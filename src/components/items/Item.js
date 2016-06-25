@@ -30,13 +30,11 @@ class Item extends React.Component {
     const body = this.props.sellerVisible && <div>Seller: {this.props.itemData.seller.name} {' | '} Phone: {this.props.itemData.seller.phone}</div>
     return(
       <ListGroupItem header={this.props.itemData.name}>
-        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-          <img src={this.props.itemData.pictureUrl} style={{ width: '50px', height: '50px'}}/>
-          <div>
-            Price: {this.props.itemData.price} ₹
-            <br />
-            Description: {this.props.itemData.condition}
-            <br />
+        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingLeft: '10px', paddingRight: '10px'}}>
+          <a href={this.props.itemData.pictureUrl}><img src={this.props.itemData.pictureUrl} style={{ width: '50px'}}/></a>
+          <div style={{width: '400px', wordWrap: 'break-word'}}>
+            <p>Price: {this.props.itemData.price} ₹</p>
+            <p>Description: {this.props.itemData.condition}</p>
             {body}
           </div>
           <div style={{marginTop: '-20px'}}>
