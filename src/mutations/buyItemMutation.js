@@ -26,6 +26,7 @@ class BuyItemMutation extends Relay.Mutation {
             otherItems
             transactions
           }
+          transactionConnection
         }
       }
     `
@@ -33,14 +34,8 @@ class BuyItemMutation extends Relay.Mutation {
 
   getConfigs() {
     return [{
-      type: 'RANGE_ADD',
-      parentName: 'store',
-      parentID: this.props.store.id,
-      connectionName: 'transactionConnection',
-      edgeName: 'transactionEdge',
-      rangeBehaviors: {
-        '': 'append'
-      }
+      type: 'FIELDS_CHANGE',
+      fieldIDs: {store: this.props.store.id}
     }];
   }
 

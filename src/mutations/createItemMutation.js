@@ -34,14 +34,8 @@ class CreateItemMutation extends Relay.Mutation {
 
   getConfigs() {
     return [{
-      type: 'RANGE_ADD',
-      parentName: 'store',
-      parentID: this.props.store.id,
-      connectionName: 'itemConnection',
-      edgeName: 'itemEdge',
-      rangeBehaviors: {
-        '': 'append'
-      }
+      type: 'FIELDS_CHANGE',
+      fieldIDs: {store: this.props.store.id}
     }];
   }
 

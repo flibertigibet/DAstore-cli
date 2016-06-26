@@ -31,11 +31,8 @@ class DeleteItemMutation extends Relay.Mutation {
 
   getConfigs() {
     return [{
-      type: 'NODE_DELETE',
-      parentName: 'store',
-      parentID: this.props.store.id,
-      connectionName: 'itemConnection',
-      deletedIDFieldName: 'deletedItemID'
+      type: 'FIELDS_CHANGE',
+      fieldIDs: {store: this.props.store.id}
     }];
   }
 

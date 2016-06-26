@@ -43,6 +43,7 @@ Home = Relay.createContainer(Home, {
   fragments: {
     rootQ: () => Relay.QL`
       fragment on Store {
+        id
         student(sellerId: $id) {
           ${AllItems.getFragment('rootQ')}
         }

@@ -16,7 +16,6 @@ class Item extends React.Component {
   }
 
   buyItemHandler = () => {
-    // console.log(this.props);
     this.props.handleMutation(
       new BuyItemMutation({
         itemId: this.props.itemData.id,
