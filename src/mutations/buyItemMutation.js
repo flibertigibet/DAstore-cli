@@ -19,7 +19,6 @@ class BuyItemMutation extends Relay.Mutation {
   getFatQuery() {
     return Relay.QL`
       fragment on BuyItemPayload {
-        transactionEdge
         store {
           student {
             myItems

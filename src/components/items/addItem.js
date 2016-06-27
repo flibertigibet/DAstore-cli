@@ -38,7 +38,7 @@ class AddItem extends React.Component {
       const res = await Request.post(`${SERVER_URL}/upload`)
         .attach(files[0].name, files[0]);
       const responseObject = JSON.parse(res.text);
-      console.log(responseObject);
+      // console.log(responseObject);
       this.setState({
         url: responseObject.secure_url,
         publicId: responseObject.public_id

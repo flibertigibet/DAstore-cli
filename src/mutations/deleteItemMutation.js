@@ -18,7 +18,6 @@ class DeleteItemMutation extends Relay.Mutation {
   getFatQuery() {
     return Relay.QL`
       fragment on DeleteItemPayload {
-        itemEdge
         store {
           student {
             myItems

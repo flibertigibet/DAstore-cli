@@ -22,7 +22,6 @@ class CreateItemMutation extends Relay.Mutation {
   getFatQuery() {
     return Relay.QL`
       fragment on CreateItemPayload {
-        itemEdge
         store {
           student {
             myItems
@@ -46,13 +45,14 @@ class CreateItemMutation extends Relay.Mutation {
   //         name: this.props.name,
   //         price: this.props.price,
   //         condition: this.props.condition,
+  //         pictureUrl: this.props.pictureUrl,
   //         seller: {
-  //           name: 'saving..',
-  //           phone: 'saving..'
+  //           name: 'saving...',
+  //           phone: 'saving...'
   //         }
   //       }
   //     },
-  //     store: this.props.store
+  //     store: {}
   //   };
   // }
 }
