@@ -1103,6 +1103,20 @@
               "defaultValue": null
             },
             {
+              "name": "publicId",
+              "description": null,
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
               "name": "sellerId",
               "description": null,
               "type": {
@@ -1140,18 +1154,6 @@
           "name": "CreateItemPayload",
           "description": null,
           "fields": [
-            {
-              "name": "itemEdge",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "OBJECT",
-                "name": "ItemEdge",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
             {
               "name": "store",
               "description": null,
@@ -1230,18 +1232,6 @@
           "name": "DeleteItemPayload",
           "description": null,
           "fields": [
-            {
-              "name": "itemEdge",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "OBJECT",
-                "name": "ItemEdge",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
             {
               "name": "store",
               "description": null,
@@ -1346,18 +1336,6 @@
           "name": "BuyItemPayload",
           "description": null,
           "fields": [
-            {
-              "name": "transactionEdge",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "OBJECT",
-                "name": "TransactionEdge",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
             {
               "name": "store",
               "description": null,

@@ -60,6 +60,7 @@ class AddItem extends React.Component {
             condition: this.refs.itemConditionInput.value,
             sellerId: localStorage.getItem('userId'),
             pictureUrl: this.state.url,
+            publicId: this.state.publicId,
             store: this.props.store
           })
         );
@@ -109,7 +110,7 @@ class AddItem extends React.Component {
           <input
               style={{ margin: 'auto 10px', marginLeft: '0px'}}
               placeholder='Enter price'
-              type='text'
+              type='number'
               ref='itemPriceInput'
             />
           <input

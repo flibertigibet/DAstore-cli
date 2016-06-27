@@ -15,6 +15,7 @@ class CreateItemMutation extends Relay.Mutation {
       price: this.props.price,
       condition: this.props.condition,
       pictureUrl: this.props.pictureUrl,
+      publicId: this.props.publicId,
       sellerId: this.props.sellerId
     }
   }
