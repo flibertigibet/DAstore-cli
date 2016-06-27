@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './common/header';
 import Login from './login';
 import Navbar from './common/navbar';
+import EditProfile from './profile/editProfile';
 
 class App extends React.Component {
 
@@ -19,7 +20,8 @@ class App extends React.Component {
 
   state = {
     user: null,
-    isLoggedIn: false
+    isLoggedIn: false,
+    newUser: false
   }
 
   setLoggedIn = (user) => {
@@ -34,6 +36,12 @@ class App extends React.Component {
     }
   }
 
+  setNewUser = (flag) => {
+    this.setState({
+      newUser: flag
+    });
+  }
+
   setLoggedOut = () => {
     this.setState({
       user: null,
@@ -42,7 +50,15 @@ class App extends React.Component {
   }
 
   render() {
-    const body = (this.state.isLoggedIn) ? <div><Navbar setLoggedOut={this.setLoggedOut}/>{this.props.children}</div> : <Login setLoggedIn={this.setLoggedIn}/>;
+    let body;
+    if (this.state.isLoggedIn) {
+      body = <div><Navbar setLoggedOut={this.setLoggedOut}/>{this.props.children}</div>;
+    } else {
+      body = <Login setNewUser={this.setNewUser} setLoggedIn={this.setLoggedIn}/>;
+    }
+    if (this.state.newUser) {
+      body = <EditProfile setNewUser={this.setNewUser}/>
+    }
     return(
       <div className='container-fluid'>
         <Header />

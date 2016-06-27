@@ -6,6 +6,7 @@ import Home from './home';
 import About from './about';
 import MyItems from './items/myItems';
 import Transactions from './transactions';
+import Profile from './profile';
 
 import {SERVER_URL} from '../helpers/constants';
 
@@ -28,6 +29,7 @@ class RelayRouter extends React.Component {
         <Route path='about' component={About} />
         <Route path='items' queries={this.rootQuery()} component={MyItems} />
         <Route path='transactions' queries={this.rootQuery()} component={Transactions} />
+        <Route path='profile' component={Profile} />
       </Route>
     );
   }

@@ -26,7 +26,7 @@ class Item extends React.Component {
   }
 
   render() {
-    const body = this.props.sellerVisible && <div>Seller: {this.props.itemData.seller.name} {' | '} Phone: {this.props.itemData.seller.phone}</div>
+    const body = this.props.sellerVisible && <div>Seller: {this.props.itemData.seller.name} {' | '} ID: {this.props.itemData.seller.studentId} {' | '} Phone: {this.props.itemData.seller.phone}</div>
     return(
       <ListGroupItem header={this.props.itemData.name}>
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingLeft: '10px', paddingRight: '10px'}}>

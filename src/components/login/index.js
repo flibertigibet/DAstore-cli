@@ -51,6 +51,7 @@ class Login extends React.Component {
     if(user.userId == null) {
       toastr.remove();
       toastr.success('Welcome new user!');
+      this.props.setNewUser(true);
       try {
         const response = await Request.post(`${SERVER_URL}/api/students/login`)
           .set('Content-Type', 'application/json')

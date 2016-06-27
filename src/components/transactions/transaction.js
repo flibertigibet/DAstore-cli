@@ -2,6 +2,8 @@ import React from 'react';
 import Relay from 'react-relay';
 import {ListGroupItem} from 'react-bootstrap';
 
+import moment from 'moment';
+
 class Transaction extends React.Component {
   render() {
     return(
@@ -9,9 +11,9 @@ class Transaction extends React.Component {
         <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: '10px', paddingRight: '10px'}}>
           <a href={this.props.rootQ.itemPictureUrl}><img src={this.props.rootQ.itemPictureUrl} style={{ width: '50px'}}/></a>
           <div style={{paddingLeft: '50px'}}>
-            <p>Seller: {this.props.rootQ.sellerName}</p>
-            <p>Buyer: {this.props.rootQ.buyerName}</p>
-            <p>Timestamp: {this.props.rootQ.timestamp}</p>
+            <p>Seller: {this.props.rootQ.sellerName} {' | '} ID: {this.props.rootQ.sellerId}</p>
+            <p>Buyer: {this.props.rootQ.buyerName} {' | '} ID: {this.props.rootQ.buyerId}</p>
+            <p>Date: {moment(this.props.rootQ.timestamp).format('DD-MM-YYYY (hh:mm a)')} {' | '} Price: {this.props.rootQ.price}</p>
           </div>
         </div>
       </ListGroupItem>
@@ -26,8 +28,11 @@ Transaction = Relay.createContainer(Transaction, {
         itemPictureUrl
         itemName
         sellerName
+        sellerId
         buyerName
+        buyerId
         timestamp
+        price
       }
     `
   }

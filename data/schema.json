@@ -577,6 +577,18 @@
               "deprecationReason": null
             },
             {
+              "name": "studentId",
+              "description": "This is the student name",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "name",
               "description": "This is the student name",
               "args": [],
@@ -883,6 +895,18 @@
               "deprecationReason": null
             },
             {
+              "name": "price",
+              "description": "This is the price recorded in the transaction",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "buyerName",
               "description": "This is the buyer name",
               "args": [],
@@ -895,7 +919,31 @@
               "deprecationReason": null
             },
             {
+              "name": "buyerId",
+              "description": "This is the seller name",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "sellerName",
+              "description": "This is the seller name",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "sellerId",
               "description": "This is the seller name",
               "args": [],
               "type": {
