@@ -1,16 +1,40 @@
 import React from 'react';
+import Relay from 'react-relay';
 import EditProfile from './editProfile';
 
 class Profile extends React.Component {
 
+  componentWillMount() {
+    this.props.relay.setVariables({
+      id: localStorage.getItem('userId')
+    });
+  }
+
   render() {
     return(
       <div>
-        <div>Hello world! Render profile info here!</div>
-        <EditProfile />
+        <h3>Profile page</h3>
+        <EditProfile student={this.props.rootQ.student}/>
       </div>
     );
   }
 }
+
+Profile = Relay.createContainer(Profile, {
+  initialVariables: {
+    id: localStorage.getItem('userId')
+  },
+  fragments: {
+    rootQ: () => Relay.QL`
+      fragment on Store {
+        student(sellerId: $id) {
+          name
+          phone
+          roomNo
+        }
+      }
+    `
+  }
+});
 
 export default Profile;

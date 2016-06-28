@@ -625,6 +625,18 @@
               "deprecationReason": null
             },
             {
+              "name": "roomNo",
+              "description": "This is the student room number",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "myItems",
               "description": "These are items that belong to student",
               "args": [
@@ -931,6 +943,18 @@
               "deprecationReason": null
             },
             {
+              "name": "buyerRoomNo",
+              "description": "This is the seller name",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "sellerName",
               "description": "This is the seller name",
               "args": [],
@@ -944,6 +968,18 @@
             },
             {
               "name": "sellerId",
+              "description": "This is the seller name",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "sellerRoomNo",
               "description": "This is the seller name",
               "args": [],
               "type": {

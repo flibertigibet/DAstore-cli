@@ -7,3 +7,7 @@
 .textInput {
   margin-bottom: 10px;
 }
+
+nav a:hover, nav a:visited, nav a:link, nav a:active {
+  text-decoration: none;
+}

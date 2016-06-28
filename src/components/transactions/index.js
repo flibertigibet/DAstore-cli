@@ -29,7 +29,7 @@ class Transactions extends React.Component{
   render() {
     const {edges} = this.props.rootQ.student.transactions;
     // console.log(transactions);
-    const body = (this.state.loading) ? <Loading /> : <ListGroup style={{ overflowY: 'scroll', maxHeight: '1000px' }}>{edges.map((edge) => <Transaction key={edge.node.id} rootQ={edge.node} />)}</ListGroup>;
+    const body = (this.state.loading) ? <Loading /> : <ListGroup style={{ overflowY: 'scroll', maxHeight: '1000px' }}>{(edges.length) ? edges.map((edge) => <Transaction key={edge.node.id} rootQ={edge.node} />) : <div>No transactions yet!</div>}</ListGroup>;
     return(
       <div>
         <h3>Transactions page</h3>

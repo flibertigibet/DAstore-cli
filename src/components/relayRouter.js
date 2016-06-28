@@ -29,7 +29,7 @@ class RelayRouter extends React.Component {
         <Route path='about' component={About} />
         <Route path='items' queries={this.rootQuery()} component={MyItems} />
         <Route path='transactions' queries={this.rootQuery()} component={Transactions} />
-        <Route path='profile' component={Profile} />
+        <Route path='profile' queries={this.rootQuery()} component={Profile} />
       </Route>
     );
   }

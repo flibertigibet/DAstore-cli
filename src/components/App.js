@@ -57,7 +57,7 @@ class App extends React.Component {
       body = <Login setNewUser={this.setNewUser} setLoggedIn={this.setLoggedIn}/>;
     }
     if (this.state.newUser) {
-      body = <EditProfile setNewUser={this.setNewUser}/>
+      body = <div><h6>Please enter the following details before continuing...</h6><EditProfile setNewUser={this.setNewUser}/></div>
     }
     return(
       <div className='container-fluid'>

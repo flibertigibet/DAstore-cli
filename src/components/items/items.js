@@ -22,7 +22,7 @@ class Items extends React.Component {
     return(
       <div>
         <ListGroup style={{ overflowY: 'scroll', maxHeight: '1000px' }}>
-          {edges.map((edge) => <Item handleMutation={this.props.handleMutation} key={edge.node.id} store={this.props.store} itemData={edge.node} sellerVisible={sellerVisible}/>)}
+          {(edges.length) ? edges.map((edge) => <Item handleMutation={this.props.handleMutation} key={edge.node.id} store={this.props.store} itemData={edge.node} sellerVisible={sellerVisible}/>) : <div>No items at this time!</div>}
         </ListGroup>
       </div>
     );
