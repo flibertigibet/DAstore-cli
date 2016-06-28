@@ -5,8 +5,11 @@ import Items from './items';
 
 class AllItems extends React.Component {
 
-  handleMutation(mutation) {
-    Relay.Store.commitUpdate(mutation);
+  handleMutation(mutation, cb) {
+    Relay.Store.commitUpdate(mutation, {
+      onFailure: cb,
+      onSuccess: cb
+    });
   }
 
   setLimit = (e) => {

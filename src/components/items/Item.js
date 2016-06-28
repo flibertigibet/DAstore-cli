@@ -1,28 +1,42 @@
 import React from 'react';
 import {ListGroupItem, Button} from 'react-bootstrap';
 
+import Loading from '../common/loading';
+
 import DeleteItemMutation from '../../mutations/deleteItemMutation';
 import BuyItemMutation from '../../mutations/buyItemMutation';
 
 class Item extends React.Component {
 
+  state = {
+    loading: false
+  };
+
   deleteHandler = () => {
+    this.setLoading(true);
     this.props.handleMutation(
       new DeleteItemMutation({
         id: this.props.itemData.id,
         store: this.props.store
-      })
+      }), () => {this.setLoading(false)}
     );
   }
 
   buyItemHandler = () => {
+    this.setLoading(true);
     this.props.handleMutation(
       new BuyItemMutation({
         itemId: this.props.itemData.id,
         buyerId: localStorage.getItem('userId'),
         store: this.props.store
-      })
+      }), () => {this.setLoading(false)}
     );
+  }
+
+  setLoading = (flag) => {
+    this.setState({
+      loading: flag
+    });
   }
 
   render() {
@@ -36,9 +50,10 @@ class Item extends React.Component {
             <p>Description: {this.props.itemData.condition}</p>
             {body}
           </div>
-          <div style={{marginTop: '-20px'}}>
+          <div style={{display: 'flex', marginTop: '-20px', width: '100px'}}>
             {!this.props.sellerVisible && <Button bsStyle='danger' onClick={this.deleteHandler}>Delete</Button>}
             {this.props.sellerVisible && <Button bsStyle='primary' onClick={this.buyItemHandler}>Buy Item</Button>}
+            {this.state.loading && <div style={{marginLeft: '-5px'}}><Loading /></div>}
           </div>
         </div>
       </ListGroupItem>

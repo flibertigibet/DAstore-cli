@@ -12,8 +12,11 @@ class MyItems extends React.Component {
     loading: true
   };
 
-  handleMutation(mutation) {
-    Relay.Store.commitUpdate(mutation);
+  handleMutation(mutation, cb) {
+    Relay.Store.commitUpdate(mutation, {
+      onFailure: cb,
+      onSuccess: cb
+    });
   }
 
   componentWillMount() {

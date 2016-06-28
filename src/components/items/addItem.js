@@ -24,6 +24,7 @@ class AddItem extends React.Component {
     files: null,
     url: null,
     publicId: null,
+    loading: false
   };
 
   onDrop = async (files) => {
@@ -53,6 +54,7 @@ class AddItem extends React.Component {
     // console.log(this.refs.itemNameInput);
     if(this.state.url && this.refs.itemNameInput.value && this.refs.itemPriceInput.value && this.refs.itemConditionInput.value) {
       try {
+        this.setLoading(true);
         this.props.handleMutation(
           new CreateItemMutation({
             name: this.refs.itemNameInput.value,
@@ -62,7 +64,7 @@ class AddItem extends React.Component {
             pictureUrl: this.state.url,
             publicId: this.state.publicId,
             store: this.props.store
-          })
+          }), () => {this.setLoading(false)}
         );
       } catch(err) {
         this.removeFailedImage();
@@ -89,6 +91,12 @@ class AddItem extends React.Component {
           publicId: null
         });
     }
+  }
+
+  setLoading = (flag) => {
+    this.setState({
+      loading: flag
+    });
   }
 
   removeFailedImage = async () => {
@@ -125,7 +133,9 @@ class AddItem extends React.Component {
                 }
               }
             />
-          <Button onClick={this.handleAddItem}>Add</Button>
+          <div style={{display: 'flex', minHeight: '50px', minWidth: '100px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+            <Button onClick={this.handleAddItem}>Add</Button> {this.state.loading && <div style={{marginTop: '-5px'}}><Loading /></div>}
+          </div>
         </FormGroup>
         <Dropzone multiple={false} onDrop={this.onDrop} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', borderStyle: 'dashed', borderWidth: '2px', minHeight: '50px', marginBottom: '20px'}}>
           {this.state.files ?
