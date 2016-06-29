@@ -55,7 +55,9 @@ AllItems = Relay.createContainer(AllItems, {
             id
             name
             price
+            status
             condition
+            reservedToId
             pictureUrl
             seller {
               studentId

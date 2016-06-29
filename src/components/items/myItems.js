@@ -68,6 +68,7 @@ MyItems = Relay.createContainer(MyItems, {
               id
               name
               price
+              status
               condition
               pictureUrl
               seller {

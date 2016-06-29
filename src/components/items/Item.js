@@ -41,18 +41,27 @@ class Item extends React.Component {
 
   render() {
     const body = this.props.sellerVisible && <div>Seller: {this.props.itemData.seller.name} {' | '} ID: {this.props.itemData.seller.studentId} {' | '} Phone: {this.props.itemData.seller.phone}</div>
+
+    let item;
+    if (this.props.itemData.status === 'available') {
+      item = (this.props.sellerVisible) ? <Button bsStyle='primary' onClick={this.buyItemHandler}>Buy Item</Button> : <Button bsStyle='danger' onClick={this.deleteHandler}>Delete</Button>;
+    } else if(this.props.itemData.reservedToId === localStorage.getItem('userId')){
+      item = <Button bsStyle='primary' disabled>Reserved</Button>;
+    } else {
+      item = (this.props.sellerVisible) ? <Button bsStyle='success' >Wait list</Button> : <Button disabled>Reserved</Button>;
+    }
+
     return(
       <ListGroupItem header={this.props.itemData.name}>
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingLeft: '10px', paddingRight: '10px'}}>
-          <a href={this.props.itemData.pictureUrl}><img src={this.props.itemData.pictureUrl} style={{ width: '50px'}}/></a>
+          <a href={this.props.itemData.pictureUrl}><img src={`${this.props.itemData.pictureUrl.slice(0,54)}c_limit,h_150,w_150/${this.props.itemData.pictureUrl.slice(54)}`} style={{ width: '50px'}}/></a>
           <div style={{width: '400px', wordWrap: 'break-word'}}>
             <p>Price: {this.props.itemData.price} ₹</p>
             <p>Description: {this.props.itemData.condition}</p>
             {body}
           </div>
           <div style={{display: 'flex', marginTop: '-20px', width: '100px'}}>
-            {!this.props.sellerVisible && <Button bsStyle='danger' onClick={this.deleteHandler}>Delete</Button>}
-            {this.props.sellerVisible && <Button bsStyle='primary' onClick={this.buyItemHandler}>Buy Item</Button>}
+            {item}
             {this.state.loading && <div style={{marginLeft: '-5px'}}><Loading /></div>}
           </div>
         </div>
