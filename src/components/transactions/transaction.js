@@ -5,7 +5,8 @@ import moment from 'moment';
 
 import Loading from '../common/loading';
 
-import UpdateItemMutation from '../../mutations/UpdateItemMutation';
+import UpdateItemMutation from '../../mutations/updateItemMutation';
+import CancelTransactionMutation from '../../mutations/cancelTransactionMutation';
 
 class Transaction extends React.Component {
 
@@ -25,6 +26,16 @@ class Transaction extends React.Component {
     );
   }
 
+  handleCancelTransaction = () => {
+    this.setLoading(true);
+    this.props.handleMutation(
+      new CancelTransactionMutation({
+        id: this.props.rootQ.id,
+        store: this.props.store
+      }), () => {this.setLoading(false)}
+    );
+  }
+
   setLoading = (flag) => {
     this.setState({
       loading: flag
@@ -32,13 +43,14 @@ class Transaction extends React.Component {
   }
 
   render() {
+    console.log(this.props.rootQ.id)
     let buttons;
     if (this.props.rootQ.item.status !== 'sold') {
       buttons =
       <div style={{ display: 'flex', justifyContent: 'space-between', minWidth: '160px', alignItems: 'center'}}>
         <div style={{ display: 'flex', flexDirection: 'column'}}>
           {(this.props.rootQ.sellerId === this.state.userId) ? <Button style={{ marginBottom: '10px' }} bsStyle='info' onClick={this.handleOrderComplete}>Order complete</Button> : null}
-          {(this.props.rootQ.sellerId === this.state.userId) ? <Button bsStyle='danger'>Cancel</Button> : <Button bsStyle='danger'>Cancel</Button>}
+          {(this.props.rootQ.sellerId === this.state.userId) ? <Button onClick={this.handleCancelTransaction} bsStyle='danger'>Cancel</Button> : <Button bsStyle='danger'>Cancel</Button>}
         </div>
         {this.state.loading && <div style={{ }}><Loading /></div>}
       </div>
@@ -68,6 +80,7 @@ Transaction = Relay.createContainer(Transaction, {
   fragments: {
     rootQ: () => Relay.QL`
       fragment on Transaction {
+        id
         itemId
         sellerId
         buyerId
