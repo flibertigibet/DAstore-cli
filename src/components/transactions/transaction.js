@@ -5,7 +5,7 @@ import moment from 'moment';
 
 import Loading from '../common/loading';
 
-import UpdateItemMutation from '../../mutations/updateItemMutation';
+import TransactionCompleteMutation from '../../mutations/transactionCompleteMutation';
 import CancelTransactionMutation from '../../mutations/cancelTransactionMutation';
 
 class Transaction extends React.Component {
@@ -18,9 +18,8 @@ class Transaction extends React.Component {
   handleOrderComplete = () => {
     this.setLoading(true);
     this.props.handleMutation(
-      new UpdateItemMutation({
-        id: this.props.rootQ.itemId,
-        status: 'sold',
+      new TransactionCompleteMutation({
+        id: this.props.rootQ.id,
         store: this.props.store
       }), () => {this.setLoading(false)}
     );
@@ -48,7 +47,7 @@ class Transaction extends React.Component {
       buttons =
       <div style={{ display: 'flex', justifyContent: 'space-between', minWidth: '100px', alignItems: 'center'}}>
         <div style={{ display: 'flex', flexDirection: 'column'}}>
-          {(this.props.rootQ.sellerId === this.state.userId) ? <Button style={{ marginBottom: '10px' }} bsStyle='info' onClick={this.handleOrderComplete}>Order complete</Button> : null}
+          {(this.props.rootQ.sellerId === this.state.userId) ? <Button style={{ marginBottom: '10px' }} bsStyle='info' onClick={this.handleOrderComplete}>Transaction Complete</Button> : null}
           <Button onClick={this.handleCancelTransaction} bsStyle='danger'>Cancel</Button>
         </div>
         {this.state.loading && <div style={{ }}><Loading /></div>}

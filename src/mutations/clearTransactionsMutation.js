@@ -1,10 +1,10 @@
 import Relay from 'react-relay';
 
-class UpdateItemMutation extends Relay.Mutation {
+class ClearTransactionsMutation extends Relay.Mutation {
   getMutation() {
     return Relay.QL`
       mutation {
-        updateItem
+        clearTransactions
       }
     `
   }
@@ -18,12 +18,10 @@ class UpdateItemMutation extends Relay.Mutation {
 
   getFatQuery() {
     return Relay.QL`
-      fragment on UpdateItemPayload {
+      fragment on ClearTransactionsPayload {
         store {
           student {
             transactions
-            myItems
-            otherItems
           }
         }
       }
@@ -56,4 +54,4 @@ class UpdateItemMutation extends Relay.Mutation {
   // }
 }
 
-export default UpdateItemMutation;
+export default ClearTransactionsMutation;

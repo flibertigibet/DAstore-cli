@@ -1,9 +1,11 @@
 import React from 'react';
 import Relay from 'react-relay';
-import {ListGroup} from 'react-bootstrap';
+import {ListGroup, Button} from 'react-bootstrap';
 
 import Transaction from './transaction';
 import Loading from '../common/loading';
+
+import ClearTransactionsMutation from '../../mutations/clearTransactionsMutation';
 
 class Transactions extends React.Component{
 
@@ -33,6 +35,14 @@ class Transactions extends React.Component{
     );
   }
 
+  handleClear = () => {
+    this.handleMutation(new ClearTransactionsMutation({
+        id: localStorage.getItem('userId'),
+        store: this.props.rootQ
+      }),
+    );
+  }
+
   render() {
     const {edges} = this.props.rootQ.student.transactions;
     // console.log(transactions);
@@ -41,6 +51,7 @@ class Transactions extends React.Component{
       <div>
         <h3>Transactions page</h3>
         {body}
+        <Button bsSize='small' onClick={this.handleClear}>clear</Button>
       </div>
     );
   }

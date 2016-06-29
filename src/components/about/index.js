@@ -13,9 +13,13 @@ class About extends React.Component {
           button of the record in the transactions page. Items of cancelled transactions are re-entered in the catalog.
         </p>
         <br />
+        <h6>
+          Website made for learning purposes and is still under testing. Report bugs at <a href='https://github.com/flibertigibet/DAstore-issues/issues'>github</a>.
+        </h6>
+        <br />
         <br />
         <p>
-          Website made for learning purposes.
+          P.S. Transactions once complete, will disappear automatically after a while.
         </p>
       </div>
     );
