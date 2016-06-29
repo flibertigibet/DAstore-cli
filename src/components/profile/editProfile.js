@@ -67,7 +67,7 @@ class EditProfile extends React.Component {
     }
   }
 
-  changeHandler = (name, e) => {
+    changeHandler = (name, e) => {
       var change = {};
       change[name] = e.target.value;
       this.setState(change);

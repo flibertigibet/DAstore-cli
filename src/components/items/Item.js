@@ -42,13 +42,11 @@ class Item extends React.Component {
   render() {
     const body = this.props.sellerVisible && <div>Seller: {this.props.itemData.seller.name} {' | '} ID: {this.props.itemData.seller.studentId} {' | '} Phone: {this.props.itemData.seller.phone}</div>
 
-    let item;
+    let button;
     if (this.props.itemData.status === 'available') {
-      item = (this.props.sellerVisible) ? <Button bsStyle='primary' onClick={this.buyItemHandler}>Buy Item</Button> : <Button bsStyle='danger' onClick={this.deleteHandler}>Delete</Button>;
-    } else if(this.props.itemData.reservedToId === localStorage.getItem('userId')){
-      item = <Button bsStyle='primary' disabled>Reserved</Button>;
+      button = (this.props.sellerVisible) ? <Button bsStyle='primary' onClick={this.buyItemHandler}>Buy Item</Button> : <Button bsStyle='danger' onClick={this.deleteHandler}>Delete</Button>;
     } else {
-      item = (this.props.sellerVisible) ? <Button bsStyle='success' >Wait list</Button> : <Button disabled>Reserved</Button>;
+      button = <Button disabled>Reserved</Button>;
     }
 
     return(
@@ -60,8 +58,8 @@ class Item extends React.Component {
             <p>Description: {this.props.itemData.condition}</p>
             {body}
           </div>
-          <div style={{display: 'flex', marginTop: '-20px', width: '100px'}}>
-            {item}
+          <div style={{display: 'flex', marginTop: '-20px', minWidth: '100px'}}>
+            {button}
             {this.state.loading && <div style={{marginLeft: '-5px'}}><Loading /></div>}
           </div>
         </div>

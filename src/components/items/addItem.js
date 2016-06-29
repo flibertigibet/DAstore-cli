@@ -24,7 +24,10 @@ class AddItem extends React.Component {
     files: null,
     url: null,
     publicId: null,
-    loading: false
+    loading: false,
+    itemName: '',
+    itemPrice: '',
+    itemCondition: ''
   };
 
   onDrop = async (files) => {
@@ -50,16 +53,22 @@ class AddItem extends React.Component {
     }
   }
 
+  changeHandler = (name, e) => {
+    var change = {};
+    change[name] = e.target.value;
+    this.setState(change);
+  }
+
   handleAddItem = () => {
     // console.log(this.refs.itemNameInput);
-    if(this.state.url && this.refs.itemNameInput.value && this.refs.itemPriceInput.value && this.refs.itemConditionInput.value) {
+    if(this.state.url && this.state.itemName && this.state.itemPrice && this.state.itemCondition) {
       try {
         this.setLoading(true);
         this.props.handleMutation(
           new CreateItemMutation({
-            name: this.refs.itemNameInput.value,
-            price: this.refs.itemPriceInput.value,
-            condition: this.refs.itemConditionInput.value,
+            name: this.state.itemName,
+            price: this.state.itemPrice,
+            condition: this.state.itemCondition,
             sellerId: localStorage.getItem('userId'),
             pictureUrl: this.state.url,
             publicId: this.state.publicId,
@@ -70,14 +79,14 @@ class AddItem extends React.Component {
         this.removeFailedImage();
         throw(err);
       }
-      this.refs.itemNameInput.value='';
-      this.refs.itemPriceInput.value='';
-      this.refs.itemConditionInput.value='';
 
       this.setState({
         files: null,
         url: null,
-        publicId: null
+        publicId: null,
+        itemName: '',
+        itemPrice: '',
+        itemCondition: ''
       });
 
     } else if(!this.state.url){
@@ -88,7 +97,10 @@ class AddItem extends React.Component {
         this.setState({
           files: null,
           url: null,
-          publicId: null
+          publicId: null,
+          itemName: '',
+          itemPrice: '',
+          itemCondition: ''
         });
     }
   }
@@ -109,23 +121,26 @@ class AddItem extends React.Component {
     return(
       <div>
         <FormGroup style={{display: 'flex', width: '600px', justifyContent: 'space-between', margin: '10px 0 10px 0'}}>
-          <input
+          <FormControl
             style={{ margin: 'auto 10px', marginLeft: '0px'}}
             placeholder='Enter new item'
             type='text'
-            ref='itemNameInput'
+            value={this.state.itemName}
+            onChange={this.changeHandler.bind(this, 'itemName')}
           />
-          <input
+          <FormControl
               style={{ margin: 'auto 10px', marginLeft: '0px'}}
               placeholder='Enter price'
               type='number'
-              ref='itemPriceInput'
+              value={this.state.itemPrice}
+              onChange={this.changeHandler.bind(this, 'itemPrice')}
             />
-          <input
+          <FormControl
               style={{ margin: 'auto 10px', marginLeft: '0px'}}
               placeholder='Enter description'
               type='text'
-              ref='itemConditionInput'
+              value={this.state.itemCondition}
+              onChange={this.changeHandler.bind(this, 'itemCondition')}
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                     this.handleAddItem();

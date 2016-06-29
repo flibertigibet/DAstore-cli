@@ -43,14 +43,13 @@ class Transaction extends React.Component {
   }
 
   render() {
-    console.log(this.props.rootQ.id)
     let buttons;
     if (this.props.rootQ.item.status !== 'sold') {
       buttons =
-      <div style={{ display: 'flex', justifyContent: 'space-between', minWidth: '160px', alignItems: 'center'}}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', minWidth: '100px', alignItems: 'center'}}>
         <div style={{ display: 'flex', flexDirection: 'column'}}>
           {(this.props.rootQ.sellerId === this.state.userId) ? <Button style={{ marginBottom: '10px' }} bsStyle='info' onClick={this.handleOrderComplete}>Order complete</Button> : null}
-          {(this.props.rootQ.sellerId === this.state.userId) ? <Button onClick={this.handleCancelTransaction} bsStyle='danger'>Cancel</Button> : <Button bsStyle='danger'>Cancel</Button>}
+          <Button onClick={this.handleCancelTransaction} bsStyle='danger'>Cancel</Button>
         </div>
         {this.state.loading && <div style={{ }}><Loading /></div>}
       </div>

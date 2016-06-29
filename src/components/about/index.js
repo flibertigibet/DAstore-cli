@@ -5,8 +5,18 @@ class About extends React.Component {
     return(
       <div>
         <h3>About page</h3>
-        <p>DA Store is a localised olx system for DA-IICT. Users need to login using their webmail accounts and view other people's items and choose whether or not to buy it.
-        Items come with description like the seller's contact details and the item's condition. View other people's items on your home page and modify your list of items in the 'My Items' page.</p>
+        <p>
+          DA Store is a localised olx system for DA-IICT. Students can upload items they want to sell along with the picture and the website will serve
+          as a catalog for anybody who is interested in buying the item inside DA-IICT. Since most students stay within campus, exchange of resuable goods becomes
+          much easier. Once a student selects an item, both the buyer and the owner will receive a record of the transaction, which they can choose to accept or
+          reject. Once the unofficial transaction is complete, the owner of the item can remove the item from the catalog by selecting the complete transaction
+          button of the record in the transactions page. Items of cancelled transactions are re-entered in the catalog.
+        </p>
+        <br />
+        <br />
+        <p>
+          Website made for learning purposes.
+        </p>
       </div>
     );
   }
