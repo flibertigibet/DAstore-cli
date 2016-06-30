@@ -18,9 +18,6 @@ class About extends React.Component {
         </h6>
         <br />
         <br />
-        <p>
-          P.S. Transactions once complete, will disappear automatically after a while.
-        </p>
       </div>
     );
   }
