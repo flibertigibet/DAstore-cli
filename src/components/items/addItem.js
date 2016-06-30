@@ -49,7 +49,12 @@ class AddItem extends React.Component {
       });
       // console.log(responseObject);
     } catch(err) {
-      throw(err);
+      Toastr.error(err);
+      this.setState({
+        files: null,
+        url: null,
+        publicId: null
+      });
     }
   }
 
@@ -155,7 +160,7 @@ class AddItem extends React.Component {
         <Dropzone multiple={false} accept='.jpg,.jpeg,.png' onDrop={this.onDrop} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', borderStyle: 'dashed', borderWidth: '2px', minHeight: '50px', marginBottom: '20px'}}>
           {this.state.files ?
             <div>
-              <div>{(this.state.url) ? <img style={{width: '200px'}}src={this.state. files[0].preview} /> : <Loading />}</div>
+              <div>{(this.state.url) ? <img style={{width: '200px'}}src={this.state.files[0].preview} /> : <Loading />}</div>
             </div> :
             <div>Drop a picture of your item, or click to select picture to upload.</div>}
         </Dropzone>

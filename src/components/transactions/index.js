@@ -51,7 +51,7 @@ class Transactions extends React.Component{
       <div>
         <h3>Transactions page</h3>
         {body}
-        <Button bsSize='small' onClick={this.handleClear}>clear</Button>
+        <Button bsSize='small' onClick={this.handleClear}>clear finished transactions</Button>
       </div>
     );
   }

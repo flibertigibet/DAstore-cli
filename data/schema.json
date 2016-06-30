@@ -650,7 +650,7 @@
             },
             {
               "name": "myItems",
-              "description": "These are items that belong to student",
+              "description": "These are items that belong to the student",
               "args": [
                 {
                   "name": "after",
@@ -741,6 +741,16 @@
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "query",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": null
