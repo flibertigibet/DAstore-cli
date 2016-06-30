@@ -11,7 +11,7 @@ import CancelTransactionMutation from '../../mutations/cancelTransactionMutation
 class Transaction extends React.Component {
 
   state = {
-    userId: localStorage.getItem('userId'),
+    userId: sessionStorage.getItem('userId'),
     loading: false
   };
 

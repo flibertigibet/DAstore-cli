@@ -7,8 +7,8 @@ import EditProfile from './profile/editProfile';
 class App extends React.Component {
 
   componentDidMount() {
-    let jwt = localStorage.getItem('jwt');
-    let userId = localStorage.getItem('userId');
+    let jwt = sessionStorage.getItem('jwt');
+    let userId = sessionStorage.getItem('userId');
     if (jwt !== null) {
       // console.log('Came here!');
       this.setLoggedIn({
@@ -27,8 +27,8 @@ class App extends React.Component {
   setLoggedIn = (user) => {
     if(user.id) {
       let jwt = user.id;
-      localStorage.setItem('jwt', jwt);
-      localStorage.setItem('userId', user.userId);
+      sessionStorage.setItem('jwt', jwt);
+      sessionStorage.setItem('userId', user.userId);
       this.setState({
         user: user,
         isLoggedIn: true

@@ -6,7 +6,7 @@ class Profile extends React.Component {
 
   componentWillMount() {
     this.props.relay.setVariables({
-      id: localStorage.getItem('userId')
+      id: sessionStorage.getItem('userId')
     });
   }
 
@@ -22,7 +22,7 @@ class Profile extends React.Component {
 
 Profile = Relay.createContainer(Profile, {
   initialVariables: {
-    id: localStorage.getItem('userId')
+    id: sessionStorage.getItem('userId')
   },
   fragments: {
     rootQ: () => Relay.QL`

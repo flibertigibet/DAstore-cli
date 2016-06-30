@@ -69,7 +69,7 @@ class AddItem extends React.Component {
             name: this.state.itemName,
             price: this.state.itemPrice,
             condition: this.state.itemCondition,
-            sellerId: localStorage.getItem('userId'),
+            sellerId: sessionStorage.getItem('userId'),
             pictureUrl: this.state.url,
             publicId: this.state.publicId,
             store: this.props.store

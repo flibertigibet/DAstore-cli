@@ -44,7 +44,7 @@ class EditProfile extends React.Component {
       roomNo: this.state.roomNo
     };
     try {
-      const res = await Request.put(`${SERVER_URL}/api/students/${localStorage.getItem('userId')}?access_token=${localStorage.getItem('jwt')}`)
+      const res = await Request.put(`${SERVER_URL}/api/students/${sessionStorage.getItem('userId')}?access_token=${sessionStorage.getItem('jwt')}`)
         .set('Content-Type', 'application/json')
         .send(userData);
 

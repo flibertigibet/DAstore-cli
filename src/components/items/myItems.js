@@ -21,7 +21,7 @@ class MyItems extends React.Component {
 
   componentWillMount() {
     this.props.relay.setVariables({
-        id: localStorage.getItem('userId')
+        id: sessionStorage.getItem('userId')
       }, readyState => {
         if (readyState.done || readyState.aborted) {
           this.setState({loading: false});

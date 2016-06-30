@@ -27,7 +27,7 @@ class Item extends React.Component {
     this.props.handleMutation(
       new BuyItemMutation({
         itemId: this.props.itemData.id,
-        buyerId: localStorage.getItem('userId'),
+        buyerId: sessionStorage.getItem('userId'),
         store: this.props.store
       }), () => {this.setLoading(false)}
     );
