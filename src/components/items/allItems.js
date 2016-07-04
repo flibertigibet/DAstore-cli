@@ -4,18 +4,20 @@ import React from 'react';
 import Relay from 'react-relay';
 
 import {FormControl} from 'react-bootstrap';
+import Loading from '../common/loading';
 
 import Items from './items';
 
 class AllItems extends React.Component {
 
   state = {
-    text: ''
+    text: '',
+    loading: false
   }
 
   constructor(props) {
     super(props);
-    this.search = debounce(this.search, 340);
+    this.search = debounce(this.search, 240);
   }
 
   handleMutation(mutation, cb) {
@@ -28,7 +30,16 @@ class AllItems extends React.Component {
   search = () => {
     this.props.relay.setVariables({
       searchString: this.state.text
-    });
+      }, readyState => {
+        if (readyState.done || readyState.aborted) {
+          this.setState({loading: false});
+        } else if (readyState.error) {
+          this.setState({loading: false, error});
+        } else {
+          this.setState({loading: true});
+        }
+      }
+    );
   }
 
   handleSearchChange = (e) => {
@@ -55,14 +66,14 @@ class AllItems extends React.Component {
     return(
       <div>
         <div style={{display: 'flex', alignItems: 'center'}}>
-          <h4>All items</h4>
+          <h4 style={{color: 'white'}}>All items</h4>
           <select onChange={this.setLimit} defaultValue={this.props.relay.variables.limit} style={{margin: '0 10px'}}>
             <option value='100'>100</option>
             <option value='200'>200</option>
             <option value='500'>500</option>
           </select>
         </div>
-        <FormControl style={{width: '200px', margin: '10px', marginLeft: '0px'}} type='text' placeholder='Search items..' onChange={this.handleSearchChange} />
+        <div style={{display: 'flex'}}><FormControl style={{width: '200px', margin: '10px', marginLeft: '0px'}} type='text' placeholder='Search items..' onChange={this.handleSearchChange} /> {this.state.loading && <Loading />}</div>
         <Items handleMutation={this.handleMutation} store = {this.props.store} edges={edges} sellerVisible={true}/>
       </div>
     );

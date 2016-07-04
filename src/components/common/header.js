@@ -2,9 +2,9 @@ import React from 'react';
 
 const Header = () => {
   return(
-    <div className='jumbotron' style={{ padding: '25px' }}>
+    <div className='jumbotron' style={{ padding: '25px', backgroundColor: '#e8edf3'}}>
       <h2>DA Store</h2>
-      <p>A local olx system for DA-IICT</p>
+      <p style={{color: 'black'}} >A local olx system for DA-IICT</p>
     </div>
   );
 }

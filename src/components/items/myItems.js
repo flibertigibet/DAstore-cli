@@ -38,12 +38,12 @@ class MyItems extends React.Component {
     const {student} = this.props.rootQ;
     const {edges} =  student.myItems;
 
-    const body = (this.state.loading) ? <Loading /> : <Items handleMutation={this.handleMutation} store={this.props.rootQ} edges={edges} />;
+    const body = (this.state.loading) ? <div style={{marginLeft: '50%'}}><Loading /></div> : <Items handleMutation={this.handleMutation} store={this.props.rootQ} edges={edges} />;
     return(
       <div>
         <h3>Items page</h3>
         <div style={{display: 'flex', alignItems: 'center'}}>
-          <h4>Add items</h4>
+          <h4 style={{color: 'white'}}>Add items</h4>
         </div>
         <AddItem handleMutation={this.handleMutation} store={this.props.rootQ}/>
         {body}

@@ -72,7 +72,7 @@ class Login extends React.Component {
 
   render() {
     return(
-      <form style={{width: '300px', margin: '0 auto', padding: '50px', borderRadius: '10px', borderStyle: 'solid', borderColor: 'rgba(0,0,0,0.2)', borderWidth: '1px'}}>
+      <form style={{width: '260px', margin: '100px auto', padding: '30px'}}>
         <FormControl className='textInput' type='text' onChange={this.onChangeId} placeholder='Enter Id'/>
         <FormControl className='textInput' type='password' onChange={this.onChangePassword} placeholder='Enter password'/>
         <Button bsStyle='primary' className='textInput' type='submit' onClick={this.loginHandler}>Login</Button>

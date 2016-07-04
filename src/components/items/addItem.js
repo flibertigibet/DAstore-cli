@@ -157,7 +157,7 @@ class AddItem extends React.Component {
             <Button onClick={this.handleAddItem}>Add</Button> {this.state.loading && <div style={{marginTop: '-5px'}}><Loading /></div>}
           </div>
         </FormGroup>
-        <Dropzone multiple={false} accept='.jpg,.jpeg,.png' onDrop={this.onDrop} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', borderStyle: 'dashed', borderWidth: '2px', minHeight: '50px', marginBottom: '20px'}}>
+        <Dropzone multiple={false} accept='.jpg,.jpeg,.png' onDrop={this.onDrop} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', borderStyle: 'dashed', borderWidth: '2px', minHeight: '50px', marginBottom: '20px', color: 'white'}}>
           {this.state.files ?
             <div>
               <div>{(this.state.url) ? <img style={{width: '200px'}}src={this.state.files[0].preview} /> : <Loading />}</div>

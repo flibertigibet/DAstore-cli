@@ -25,7 +25,7 @@ class Navbar extends React.Component {
 
   render() {
     return(
-      <div>
+      <div style={{backgroundColor: 'white', maxWidth: '370px', padding: '10px', borderRadius: '10px'}}>
         <nav>
             <Link to='/'>Home</Link>
             { ' | ' }

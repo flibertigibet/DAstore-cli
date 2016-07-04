@@ -4,10 +4,34 @@
   margin: 0 auto;
 }
 
+#bgImage {
+  background-image: url("rcharcoal_grey_texture_ed_ed_ed_shop_preview.png");
+  background-repeat: repeat;
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+}
+
 .textInput {
   margin-bottom: 10px;
 }
 
 nav a:hover, nav a:visited, nav a:link, nav a:active {
   text-decoration: none;
+}
+
+nav a {
+  color: black;
+}
+
+nav a:hover {
+  color: rgba(0,0,0,0.6);
+}
+
+div h3 {
+  color: #FFFFFF;
+}
+
+.bodyText {
+  color: #DFDFDF;
 }

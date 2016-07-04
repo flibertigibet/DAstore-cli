@@ -40,7 +40,7 @@ class Item extends React.Component {
   }
 
   render() {
-    const body = this.props.sellerVisible && <div>Seller: {this.props.itemData.seller.name} {' | '} ID: {this.props.itemData.seller.studentId} {' | '} Phone: {this.props.itemData.seller.phone}</div>
+    const body = this.props.sellerVisible && <p>Seller: {this.props.itemData.seller.name} {' | '} ID: {this.props.itemData.seller.studentId} {' | '} Phone: {this.props.itemData.seller.phone}</p>
 
     let button;
     if (this.props.itemData.status === 'available') {
@@ -60,7 +60,7 @@ class Item extends React.Component {
           </div>
           <div style={{display: 'flex', marginTop: '-20px', minWidth: '100px'}}>
             {button}
-            {this.state.loading && <div style={{marginLeft: '-5px'}}><Loading /></div>}
+            {this.state.loading && <div style={{marginLeft: '10px', marginTop: '-10px'}}><Loading /></div>}
           </div>
         </div>
       </ListGroupItem>

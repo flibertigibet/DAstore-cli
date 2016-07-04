@@ -26,7 +26,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const body = (this.state.loading) ? <Loading /> : <AllItems store={this.props.rootQ} rootQ={this.props.rootQ.student}/>;
+    const body = (this.state.loading) ? <div style={{marginLeft: '50%'}}><Loading /></div> : <AllItems store={this.props.rootQ} rootQ={this.props.rootQ.student}/>;
     return(
       <div>
         <h3>Home page</h3>

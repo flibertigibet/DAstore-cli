@@ -3,7 +3,7 @@ import React from 'react';
 class About extends React.Component {
   render() {
     return(
-      <div>
+      <div className='bodyText'>
         <h3>About page</h3>
         <p>
           DA Store is a localised olx system for DA-IICT. Students can upload items they want to sell along with the picture and the website will serve
@@ -13,9 +13,9 @@ class About extends React.Component {
           button of the record in the transactions page. Items of cancelled transactions are re-entered in the catalog.
         </p>
         <br />
-        <h6>
+        <p style={{fontSize: '0.8em'}}>
           Website made for learning purposes and is still under testing. Report bugs at <a href='https://github.com/flibertigibet/DAstore-issues/issues'>github</a>.
-        </h6>
+        </p>
         <br />
         <br />
       </div>

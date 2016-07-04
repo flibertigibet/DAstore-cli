@@ -77,7 +77,7 @@ class EditProfile extends React.Component {
     // console.log(this.props);
     return(
       <FormGroup style={{display: 'flex', width: '300px', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-start', margin: '10px 0 10px 0'}}>
-        <ControlLabel>Name</ControlLabel>
+        <ControlLabel style={style.labelStyle}>Name</ControlLabel>
         <FormControl
           style={{marginBottom: '5px'}}
           placeholder='Enter your name'
@@ -85,7 +85,7 @@ class EditProfile extends React.Component {
           onChange={this.changeHandler.bind(this, 'name')}
           value={this.state.name}
         />
-        <ControlLabel>Phone</ControlLabel>
+        <ControlLabel style={style.labelStyle}>Phone</ControlLabel>
         <FormControl
           style={{marginBottom: '5px'}}
           placeholder='Enter phone number'
@@ -93,7 +93,7 @@ class EditProfile extends React.Component {
           onChange={this.changeHandler.bind(this, 'phoneNo')}
           value={this.state.phoneNo}
         />
-        <ControlLabel>Room No</ControlLabel>
+        <ControlLabel style={style.labelStyle}>Room No</ControlLabel>
         <FormControl
           style={{marginBottom: '5px'}}
           placeholder='Enter hostel room'
@@ -108,5 +108,11 @@ class EditProfile extends React.Component {
     );
   }
 }
+
+const style = {
+  labelStyle: {
+    color: 'white'
+  }
+};
 
 export default EditProfile;

@@ -50,7 +50,7 @@ class Transaction extends React.Component {
           {(this.props.rootQ.sellerId === this.state.userId) ? <Button style={{ marginBottom: '10px' }} bsStyle='info' onClick={this.handleOrderComplete}>Transaction Complete</Button> : null}
           <Button onClick={this.handleCancelTransaction} bsStyle='danger'>Cancel</Button>
         </div>
-        {this.state.loading && <div style={{ }}><Loading /></div>}
+        {this.state.loading && <div style={{marginLeft: '10px', marginTop: '-10px'}}><Loading /></div>}
       </div>
     } else {
         buttons =
