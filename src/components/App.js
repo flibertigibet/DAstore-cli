@@ -4,9 +4,15 @@ import Login from './login';
 import Navbar from './common/navbar';
 import EditProfile from './profile/editProfile';
 
+import Request from 'superagent';
+import {SERVER_URL} from '../helpers/constants';
+
 class App extends React.Component {
 
-  componentDidMount() {
+  componentWillMount() {
+    Request.get(SERVER_URL).then((obj) => {
+      console.log('Server awake!');
+    });
     let jwt = sessionStorage.getItem('jwt');
     let userId = sessionStorage.getItem('userId');
     if (jwt !== null) {
